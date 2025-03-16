@@ -1,11 +1,10 @@
 extends CharacterBody2D
 
+signal has_shoot_laser()
+signal has_thrown_granade()
+
 var can_laser: bool = true
 var can_granade: bool = true
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -19,17 +18,26 @@ func _process(_delta: float) -> void:
 	
 	#laser shooting input
 	if(Input.is_action_pressed("primary_action")) and can_laser:
-		print('shoot laser')
+		# randomly select marker for laser initial position		
 		can_laser = false
 		$LaserTimer.start()
 		
+		# emit laser position that will created
+		has_shoot_laser.emit(selectRandomWeaponMarkerPosition())
+		
 	if(Input.is_action_pressed("secondary_action")) and can_granade:
-		print('granade')
 		can_granade = false
 		$GranadeTimer.start()
+		
+		#emit granade position that will be created
+		has_thrown_granade.emit(selectRandomWeaponMarkerPosition())
 
 func _on_laser_timer_timeout() -> void:
 	can_laser = true
 
 func _on_granade_timer_timeout() -> void:
 	can_granade = true
+
+func selectRandomWeaponMarkerPosition() -> Vector2:
+	var selected_laser_marker: Marker2D = $LaserStartPosition.get_children().pick_random()
+	return selected_laser_marker.global_position

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bep0yhb45j2pt"]
+
+[ext_resource type="Texture2D" uid="uid://bhh1531c64xkn" path="res://graphics/projectiles/grenade.png" id="1_utjer"]
+[ext_resource type="Script" path="res://scenes/projectiles/granade.gd" id="1_x6jmb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ylw78"]
+radius = 76.1052
+
+[node name="Granade" type="RigidBody2D"]
+script = ExtResource("1_x6jmb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_utjer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.4, 0.4)
+shape = SubResource("CircleShape2D_ylw78")

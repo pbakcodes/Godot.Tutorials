@@ -22,5 +22,16 @@ wait_time = 0.5
 [node name="GranadeTimer" type="Timer" parent="."]
 wait_time = 2.0
 
+[node name="LaserStartPosition" type="Node2D" parent="."]
+
+[node name="Marker2D1" type="Marker2D" parent="LaserStartPosition"]
+position = Vector2(18, -134)
+
+[node name="Marker2D2" type="Marker2D" parent="LaserStartPosition"]
+position = Vector2(11, -131)
+
+[node name="Marker2D3" type="Marker2D" parent="LaserStartPosition"]
+position = Vector2(26, -131)
+
 [connection signal="timeout" from="LaserTimer" to="." method="_on_laser_timer_timeout"]
 [connection signal="timeout" from="GranadeTimer" to="." method="_on_granade_timer_timeout"]
