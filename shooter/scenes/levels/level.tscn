@@ -1,16 +1,32 @@
 [gd_scene load_steps=5 format=3 uid="uid://2uud78fknxo6"]
 
-[ext_resource type="Texture2D" uid="uid://cnpl4xsm5n7mn" path="res://icon.svg" id="1_bjln1"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_w7n4a"]
 [ext_resource type="PackedScene" uid="uid://mvf82ph1kjqh" path="res://scenes/layer/player.tscn" id="2_gnxlu"]
-[ext_resource type="Script" path="res://scenes/logo.gd" id="2_wj1ym"]
+[ext_resource type="Texture2D" uid="uid://v6tf2ujiq5j8" path="res://graphics/objects/gate.png" id="3_qaf4l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68838"]
+size = Vector2(797, 160.75)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_w7n4a")
 
-[node name="Logo" type="Sprite2D" parent="."]
-texture = ExtResource("1_bjln1")
-script = ExtResource("2_wj1ym")
+[node name="Gate" type="StaticBody2D" parent="."]
+position = Vector2(573, -549)
+
+[node name="Gate" type="Sprite2D" parent="Gate"]
+texture = ExtResource("3_qaf4l")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Gate"]
+polygon = PackedVector2Array(-1438, -780, -1435, 546, -1426, 597, -1401, 654, -1369, 694, -1334, 729, -1297, 749, -1250, 769, -1206, 777, -1185, 779, -368, 781, -365, 774, -366, 658, -358, 635, -348, 619, -334, 608, -316, 601, -300, 598, 425, 598, 442, 601, 456, 609, 471, 620, 481, 636, 488, 655, 488, 775, 489, 775, 489, 779, 1316, 779, 1346, 777, 1372, 769, 1398, 759, 1422, 749, 1450, 731, 1477, 711, 1498, 687, 1516, 664, 1532, 639, 1542, 613, 1551, 587, 1555, 563, 1558, 549, 1560, -778)
+
+[node name="Area2D" type="Area2D" parent="Gate"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate/Area2D"]
+position = Vector2(58.5, 722.375)
+shape = SubResource("RectangleShape2D_68838")
 
 [node name="Player" parent="." instance=ExtResource("2_gnxlu")]
-position = Vector2(576, 280)
+position = Vector2(198, 577)
+
+[connection signal="body_entered" from="Gate/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Gate/Area2D" to="." method="_on_area_2d_body_exited"]
