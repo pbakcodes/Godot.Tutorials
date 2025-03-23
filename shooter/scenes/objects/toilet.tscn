@@ -1,26 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://cghq2giftui2m"]
+[gd_scene load_steps=6 format=3 uid="uid://8rmxfa1kaevb"]
 
+[ext_resource type="PackedScene" uid="uid://dibsxkf6ffded" path="res://scenes/objects/item_container.tscn" id="1_27r2e"]
 [ext_resource type="Texture2D" uid="uid://2mwubp4lamet" path="res://graphics/objects/toilet.png" id="1_75nvf"]
+[ext_resource type="Script" path="res://scenes/objects/toilet.gd" id="2_5t2tr"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ti5g0"]
-radius = 106.513
+[sub_resource type="CircleShape2D" id="CircleShape2D_gh444"]
+radius = 105.475
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e377q"]
-radius = 36.0
-height = 242.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_32bf6"]
+radius = 34.0
+height = 238.0
 
-[node name="Toilet" type="StaticBody2D"]
-collision_layer = 4
-collision_mask = 11
+[node name="Toilet" instance=ExtResource("1_27r2e")]
+script = ExtResource("2_5t2tr")
 
-[node name="ToiletImage" type="Sprite2D" parent="."]
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -20)
 texture = ExtResource("1_75nvf")
 
-[node name="CollisionShape2DMain" type="CollisionShape2D" parent="."]
-position = Vector2(0, 10)
-shape = SubResource("CircleShape2D_ti5g0")
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_gh444")
 
-[node name="CollisionShape2DBack" type="CollisionShape2D" parent="."]
-position = Vector2(0, -87)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, -110)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_e377q")
+shape = SubResource("CapsuleShape2D_32bf6")

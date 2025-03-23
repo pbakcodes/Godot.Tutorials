@@ -6,6 +6,9 @@ signal has_thrown_granade(pos, direction)
 var can_laser: bool = true
 var can_granade: bool = true
 
+@export var max_speed: int = 500
+var speed: int = max_speed
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	
@@ -13,7 +16,7 @@ func _process(_delta: float) -> void:
 	var direction = Input.get_vector("left", "right", "up", "down")
 	
 	#collision
-	velocity = direction * 500
+	velocity = direction * speed
 	move_and_slide()
 	
 	# rotation based on mouse position
