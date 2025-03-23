@@ -24,6 +24,7 @@ func _process(_delta: float) -> void:
 	
 	#laser shooting input
 	if(Input.is_action_pressed("primary_action")) and can_laser:
+		$GPUParticles2D.emitting = true
 		# randomly select marker for laser initial position		
 		can_laser = false
 		$LaserTimer.start()
