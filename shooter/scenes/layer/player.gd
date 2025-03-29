@@ -26,7 +26,8 @@ func _process(_delta: float) -> void:
 	var player_direction = (get_global_mouse_position() - position).normalized()
 	
 	#laser shooting input
-	if(Input.is_action_pressed("primary_action")) and can_laser:
+	if(Input.is_action_pressed("primary_action")) and can_laser and Globals.laser_amount > 0:
+		Globals.laser_amount -= 1
 		$GPUParticles2D.emitting = true
 		# randomly select marker for laser initial position		
 		can_laser = false
@@ -36,7 +37,8 @@ func _process(_delta: float) -> void:
 		var selected_laser_marker_position: Vector2 = $LaserStartPosition.get_children().pick_random().global_position
 		has_shoot_laser.emit(selected_laser_marker_position, player_direction)
 		
-	if(Input.is_action_pressed("secondary_action")) and can_granade:
+	if(Input.is_action_pressed("secondary_action")) and can_granade and Globals.granade_amount > 0:
+		Globals.granade_amount -= 1
 		can_granade = false
 		$GranadeTimer.start()
 		var marker_position = $LaserStartPosition/Marker2D1.global_position

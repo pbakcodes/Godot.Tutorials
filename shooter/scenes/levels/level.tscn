@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://2uud78fknxo6"]
+[gd_scene load_steps=4 format=3 uid="uid://2uud78fknxo6"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_w7n4a"]
 [ext_resource type="PackedScene" uid="uid://mvf82ph1kjqh" path="res://scenes/layer/player.tscn" id="2_gnxlu"]
+[ext_resource type="PackedScene" uid="uid://da1yephqlwrlh" path="res://scenes/user interface/ui.tscn" id="3_kfajj"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_w7n4a")
@@ -19,6 +20,8 @@ position_smoothing_enabled = true
 metadata/_edit_lock_ = true
 
 [node name="Lights" type="Node2D" parent="."]
+
+[node name="UI" parent="." instance=ExtResource("3_kfajj")]
 
 [connection signal="has_shoot_laser" from="Player" to="." method="_on_player_has_shoot_laser"]
 [connection signal="has_thrown_granade" from="Player" to="." method="_on_player_has_thrown_granade"]

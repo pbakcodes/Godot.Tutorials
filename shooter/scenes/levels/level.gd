@@ -11,12 +11,14 @@ func _on_player_has_shoot_laser(pos, direction) -> void:
 	laser.rotation_degrees = rad_to_deg(direction.angle()) + 90
 	laser.direction = direction
 	$Projectiles.add_child(laser)
+	$UI.update_laser_text() 
 
 func _on_player_has_thrown_granade(pos, direction) -> void:
 	var granade = granade_scene.instantiate() as RigidBody2D
 	granade.position = pos
 	granade.linear_velocity = direction * granade.speed
 	$Projectiles.add_child(granade)
+	$UI.update_granade_text()
 
 func _on_house_player_entered() -> void:
 	var tween = create_tween()
