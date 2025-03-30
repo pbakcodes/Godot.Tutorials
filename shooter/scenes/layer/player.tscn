@@ -50,16 +50,16 @@ wait_time = 2.0
 [node name="LaserStartPosition" type="Node2D" parent="."]
 
 [node name="Marker2D1" type="Marker2D" parent="LaserStartPosition"]
-position = Vector2(134, 19)
+position = Vector2(138, 19)
 
 [node name="Marker2D2" type="Marker2D" parent="LaserStartPosition"]
-position = Vector2(128, 10)
+position = Vector2(138, 10)
 
 [node name="Marker2D3" type="Marker2D" parent="LaserStartPosition"]
-position = Vector2(128, 28)
+position = Vector2(138, 28)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(135, 19)
+position = Vector2(134, 19)
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_dodom")
 texture = ExtResource("3_5hhwu")
@@ -68,6 +68,7 @@ one_shot = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_fh2wy")
+metadata/_edit_lock_ = true
 
 [connection signal="timeout" from="LaserTimer" to="." method="_on_laser_timer_timeout"]
 [connection signal="timeout" from="GranadeTimer" to="." method="_on_granade_timer_timeout"]

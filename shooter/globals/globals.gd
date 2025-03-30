@@ -24,7 +24,8 @@ var health: int = 60:
 				player_can_be_damaged = false
 				player_immune_timer()
 		stat_change.emit()
-			
+		
+		
 func player_immune_timer() -> void:
 	await get_tree().create_timer(0.5).timeout
 	player_can_be_damaged = true

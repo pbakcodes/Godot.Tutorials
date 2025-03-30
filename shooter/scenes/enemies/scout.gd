@@ -12,8 +12,9 @@ func hit():
 		health -= 10
 		can_be_damaged = false
 		$Timers/HitTimer.start()
-		if health <= 0:
-			queue_free()
+		$Sprite2D.material.set_shader_parameter("progress", 1)
+	if health <= 0:
+		queue_free()
 
 func _process(_delta):
 	if player_nearby: 
@@ -37,3 +38,4 @@ func _on_laser_cooldown_timeout():
 	
 func _on_hit_timer_timeout() -> void:
 	can_be_damaged = true
+	$Sprite2D.material.set_shader_parameter("progress", 0)

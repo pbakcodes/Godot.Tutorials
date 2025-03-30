@@ -134,7 +134,7 @@ position = Vector2(-273, 426)
 position = Vector2(-198, 1004)
 
 [node name="Scout" parent="Enemies" index="0" instance=ExtResource("17_8gst7")]
-position = Vector2(981, 667)
+position = Vector2(1576, 617)
 
 [node name="Player" parent="." index="6"]
 position = Vector2(769, 198)
