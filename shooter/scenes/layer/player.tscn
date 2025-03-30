@@ -41,7 +41,7 @@ position = Vector2(40, 0)
 rotation = 1.5708
 texture = ExtResource("1_o6mfu")
 
-[node name="LaserTimer" type="Timer" parent="."]
+[node name="LaserTimer" type="Timer" parent="." groups=["Entity"]]
 wait_time = 0.5
 
 [node name="GranadeTimer" type="Timer" parent="."]

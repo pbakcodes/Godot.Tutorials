@@ -3,7 +3,17 @@ extends CharacterBody2D
 var player_nearby: bool = false
 signal laser(pos, direction)
 var can_laser: bool = true
+var can_be_damaged: bool = true
 var right_gun_use: bool = true
+var health: int = 30
+
+func hit():
+	if can_be_damaged:
+		health -= 10
+		can_be_damaged = false
+		$HitTimer.start()
+		if health <= 0:
+			queue_free()
 
 func _process(_delta):
 	if player_nearby: 
@@ -25,3 +35,5 @@ func _on_attack_area_body_exited(_body: Node2D) -> void:
 func _on_laser_cooldown_timeout():
 	can_laser = true
 	
+func _on_hit_timer_timeout() -> void:
+	can_be_damaged = true
