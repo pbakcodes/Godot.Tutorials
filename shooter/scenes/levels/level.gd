@@ -27,3 +27,8 @@ func _on_house_player_entered() -> void:
 func _on_house_player_exited() -> void:
 	var tween = create_tween()
 	tween.tween_property($Player/Camera2D, "zoom", Vector2(0.6, 0.6), 2)
+
+
+func _on_player_update_stats() -> void:
+	$UI.update_laser_text()
+	$UI.update_granade_text()

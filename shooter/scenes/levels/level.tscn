@@ -25,3 +25,4 @@ metadata/_edit_lock_ = true
 
 [connection signal="has_shoot_laser" from="Player" to="." method="_on_player_has_shoot_laser"]
 [connection signal="has_thrown_granade" from="Player" to="." method="_on_player_has_thrown_granade"]
+[connection signal="update_stats" from="Player" to="." method="_on_player_update_stats"]

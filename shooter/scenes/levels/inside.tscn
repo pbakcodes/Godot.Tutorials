@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bwb0paeqejauv"]
+[gd_scene load_steps=14 format=3 uid="uid://bwb0paeqejauv"]
 
 [ext_resource type="PackedScene" uid="uid://2uud78fknxo6" path="res://scenes/levels/level.tscn" id="1_t86p5"]
 [ext_resource type="TileSet" uid="uid://iq3ymavvby74" path="res://scenes/levels/house.tres" id="2_7ssak"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dft5xaesd0drm" path="res://graphics/lights/overlays/infrastructure.png" id="5_3rysb"]
 [ext_resource type="Texture2D" uid="uid://cwld0mpr4gvnt" path="res://graphics/lights/overlays/hole.png" id="6_8vvtm"]
 [ext_resource type="Texture2D" uid="uid://cqsgaeo6loeqa" path="res://graphics/lights/overlays/lattice.png" id="7_dbtwt"]
+[ext_resource type="PackedScene" uid="uid://dkco4hm6y3op0" path="res://scenes/items/item.tscn" id="12_xqgin"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ohhf"]
 size = Vector2(180.5, 769)
@@ -36,7 +37,7 @@ layer_2/name = "Inner Walls"
 layer_2/tile_data = PackedInt32Array(-196604, 327680, 6, -131069, 131072, 7, -131070, 0, 6, -131071, 0, 6, -65537, 393216, 7, -65538, 0, 6, -65539, 0, 6, -65540, 0, 8, -131076, 327680, 6, -131068, 65536, 8, -131072, 262144, 7, -65533, 65536, 6, 3, 65536, 6, 65539, 65536, 6, 131075, 65536, 6, 327683, 327680, 6, 393219, 65536, 6, 458755, 65536, 6, 196617, 0, 6, 196616, 0, 6, 196615, 0, 6, 196614, 262144, 7, 196611, 131072, 8, 196612, 393216, 7, 458750, 65536, 6, 393214, 327680, 6, 327678, 327680, 8, 196603, 0, 6, 196604, 0, 6, 196605, 0, 6, 524283, 0, 6, 524284, 0, 6, 524285, 0, 6, 524286, 65536, 8, 196606, 65536, 7, 262142, 65536, 6)
 
 [node name="Player" parent="." index="1"]
-position = Vector2(4295, 396)
+position = Vector2(4295, 394)
 
 [node name="Camera2D" parent="Player" index="7"]
 metadata/_edit_lock_ = true
@@ -45,6 +46,10 @@ metadata/_edit_lock_ = true
 texture = ExtResource("4_u7exg")
 texture_scale = 3.0
 metadata/_edit_lock_ = true
+
+[node name="Lights" parent="." index="3"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="LightFanAnimation" parent="Lights" index="0" instance=ExtResource("4_frcv8")]
 position = Vector2(4336, 440)
@@ -173,5 +178,8 @@ blend_mode = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitGateArea" index="0"]
 position = Vector2(4851.75, 388.5)
 shape = SubResource("RectangleShape2D_1ohhf")
+
+[node name="Item" parent="." index="7" instance=ExtResource("12_xqgin")]
+position = Vector2(3621, 221)
 
 [connection signal="body_entered" from="ExitGateArea" to="." method="_on_exit_gate_area_body_entered"]
