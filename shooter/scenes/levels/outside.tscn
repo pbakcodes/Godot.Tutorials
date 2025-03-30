@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://diupsqec1hrdc"]
+[gd_scene load_steps=22 format=3 uid="uid://diupsqec1hrdc"]
 
 [ext_resource type="PackedScene" uid="uid://2uud78fknxo6" path="res://scenes/levels/level.tscn" id="1_6q6ua"]
 [ext_resource type="PackedScene" uid="uid://ee130alqhs3s" path="res://scenes/objects/gate.tscn" id="2_ihxta"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b7mwtvnll180" path="res://scenes/objects/light_fan_animation.tscn" id="12_0oo8d"]
 [ext_resource type="PackedScene" uid="uid://dxes8ivauafjv" path="res://scenes/objects/steam_vent.tscn" id="13_x7vu5"]
 [ext_resource type="PackedScene" uid="uid://dc1jl7jlngjd0" path="res://scenes/enemies/drone.tscn" id="15_xvxw8"]
+[ext_resource type="PackedScene" uid="uid://c4em0p3k4t4p5" path="res://scenes/enemies/scout.tscn" id="17_8gst7"]
 [ext_resource type="PackedScene" uid="uid://dkco4hm6y3op0" path="res://scenes/items/item.tscn" id="17_tl8y1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6d5un"]
@@ -129,11 +130,14 @@ frame_progress = 0.483206
 [node name="SteamVent" parent="Ground" index="14" instance=ExtResource("13_x7vu5")]
 position = Vector2(-273, 426)
 
-[node name="Player" parent="." index="3"]
-position = Vector2(769, 198)
-
 [node name="Drone" parent="." index="4" instance=ExtResource("15_xvxw8")]
 position = Vector2(-198, 1004)
+
+[node name="Scout" parent="Enemies" index="0" instance=ExtResource("17_8gst7")]
+position = Vector2(981, 667)
+
+[node name="Player" parent="." index="6"]
+position = Vector2(769, 198)
 
 [node name="Item" parent="." index="7" instance=ExtResource("17_tl8y1")]
 position = Vector2(541, 336)

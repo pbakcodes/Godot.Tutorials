@@ -19,6 +19,9 @@ func _process(_delta: float) -> void:
 	velocity = direction * speed
 	move_and_slide()
 	
+	#update global info of player position
+	Globals.player_position = global_position
+	
 	# rotation based on mouse position
 	look_at(get_global_mouse_position())
 	
