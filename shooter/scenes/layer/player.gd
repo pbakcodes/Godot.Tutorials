@@ -9,6 +9,9 @@ var can_granade: bool = true
 @export var max_speed: int = 500
 var speed: int = max_speed
 
+func hit() -> void:
+	Globals.health -= 10
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	

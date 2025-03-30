@@ -13,7 +13,18 @@ var granade_amount: int = 5:
 		granade_amount = value
 		stat_change.emit()
 
+var player_can_be_damaged: bool = true
 var health: int = 60:
 	set(value):
-		health = value
+		if value > health:
+			health = min(value, 100)
+		else:
+			if player_can_be_damaged:
+				health = value
+				player_can_be_damaged = false
+				player_immune_timer()
 		stat_change.emit()
+			
+func player_immune_timer() -> void:
+	await get_tree().create_timer(0.5).timeout
+	player_can_be_damaged = true
