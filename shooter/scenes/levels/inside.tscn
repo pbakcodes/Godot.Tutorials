@@ -1,16 +1,22 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwb0paeqejauv"]
+[gd_scene load_steps=20 format=3 uid="uid://bwb0paeqejauv"]
 
 [ext_resource type="PackedScene" uid="uid://2uud78fknxo6" path="res://scenes/levels/level.tscn" id="1_t86p5"]
 [ext_resource type="TileSet" uid="uid://iq3ymavvby74" path="res://scenes/levels/house.tres" id="2_7ssak"]
 [ext_resource type="Script" path="res://scenes/levels/inside.gd" id="2_a8gdk"]
 [ext_resource type="Texture2D" uid="uid://1duyl1nfq4j6" path="res://graphics/ground/dirt.png" id="2_f2tvu"]
+[ext_resource type="Texture2D" uid="uid://d00pdst7ok5fv" path="res://graphics/decals/brushes/brush045.png" id="3_s8s6n"]
+[ext_resource type="Texture2D" uid="uid://cb2mal20vwlyx" path="res://graphics/decals/brushes/brush055.png" id="4_2hsqr"]
 [ext_resource type="PackedScene" uid="uid://ct77l8usdbpia" path="res://scenes/objects/wall_light.tscn" id="4_33nts"]
 [ext_resource type="PackedScene" uid="uid://b7mwtvnll180" path="res://scenes/objects/light_fan_animation.tscn" id="4_frcv8"]
 [ext_resource type="Texture2D" uid="uid://d3oefybs11c2m" path="res://graphics/lights/textures/circle.png" id="4_u7exg"]
 [ext_resource type="PackedScene" uid="uid://qawe6l6h02g1" path="res://scenes/objects/simple_light.tscn" id="5_2s3se"]
 [ext_resource type="Texture2D" uid="uid://dft5xaesd0drm" path="res://graphics/lights/overlays/infrastructure.png" id="5_3rysb"]
 [ext_resource type="Texture2D" uid="uid://cwld0mpr4gvnt" path="res://graphics/lights/overlays/hole.png" id="6_8vvtm"]
+[ext_resource type="PackedScene" uid="uid://k4hlchn5r6ko" path="res://scenes/objects/bed.tscn" id="6_cax5l"]
 [ext_resource type="Texture2D" uid="uid://cqsgaeo6loeqa" path="res://graphics/lights/overlays/lattice.png" id="7_dbtwt"]
+[ext_resource type="PackedScene" uid="uid://of4w84tly88t" path="res://scenes/objects/box.tscn" id="7_fxs32"]
+[ext_resource type="PackedScene" uid="uid://dxes8ivauafjv" path="res://scenes/objects/steam_vent.tscn" id="8_b3o7d"]
+[ext_resource type="PackedScene" uid="uid://8rmxfa1kaevb" path="res://scenes/objects/toilet.tscn" id="8_wnh6a"]
 [ext_resource type="PackedScene" uid="uid://dkco4hm6y3op0" path="res://scenes/items/item.tscn" id="12_xqgin"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ohhf"]
@@ -19,7 +25,60 @@ size = Vector2(180.5, 769)
 [node name="Inside" instance=ExtResource("1_t86p5")]
 script = ExtResource("2_a8gdk")
 
+[node name="Sprite2D" type="Sprite2D" parent="Decals" index="0"]
+modulate = Color(0.0392157, 0.0666667, 0.0705882, 0.490196)
+position = Vector2(2844, 68)
+texture = ExtResource("3_s8s6n")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Decals" index="1"]
+modulate = Color(0.0392157, 0.0666667, 0.0705882, 0.490196)
+position = Vector2(3047, 2098)
+texture = ExtResource("3_s8s6n")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Decals" index="2"]
+modulate = Color(0.0392157, 0.0666667, 0.0705882, 0.490196)
+position = Vector2(-941, 3797)
+texture = ExtResource("3_s8s6n")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Decals" index="3"]
+modulate = Color(0.0470588, 0.0745098, 0.0823529, 0.505882)
+position = Vector2(369, 3136)
+texture = ExtResource("4_2hsqr")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Decals" index="4"]
+modulate = Color(0.0470588, 0.0745098, 0.0823529, 0.505882)
+position = Vector2(-902, 246)
+texture = ExtResource("4_2hsqr")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Decals" index="5"]
+modulate = Color(0.0470588, 0.0745098, 0.0823529, 0.505882)
+position = Vector2(399, -826)
+texture = ExtResource("4_2hsqr")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Decals" index="6"]
+modulate = Color(0.0470588, 0.0745098, 0.0823529, 0.505882)
+position = Vector2(2289, 949)
+texture = ExtResource("4_2hsqr")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Decals" index="7"]
+modulate = Color(0.0470588, 0.0745098, 0.0823529, 0.505882)
+position = Vector2(2289, 949)
+texture = ExtResource("4_2hsqr")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Decals" index="8"]
+modulate = Color(0.0470588, 0.0745098, 0.0823529, 0.505882)
+position = Vector2(2289, 949)
+rotation = 0.762106
+texture = ExtResource("4_2hsqr")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Decals" index="9"]
+modulate = Color(0.0470588, 0.0745098, 0.0823529, 0.505882)
+position = Vector2(3832, 588)
+rotation = 1.309
+texture = ExtResource("4_2hsqr")
+
 [node name="Sprite2D" type="Sprite2D" parent="Ground" index="0"]
+z_index = -2
 texture_repeat = 2
 texture = ExtResource("2_f2tvu")
 region_enabled = true
@@ -27,6 +86,7 @@ region_rect = Rect2(-3000, -1500, 15000, 10000)
 metadata/_edit_lock_ = true
 
 [node name="TileMap" type="TileMap" parent="Ground" index="1"]
+z_index = -1
 tile_set = ExtResource("2_7ssak")
 format = 2
 layer_0/name = "Floor"
@@ -36,7 +96,117 @@ layer_1/tile_data = PackedInt32Array(-196599, 327680, 0, -65524, 327680, 0, 1966
 layer_2/name = "Inner Walls"
 layer_2/tile_data = PackedInt32Array(-196604, 327680, 6, -131069, 131072, 7, -131070, 0, 6, -131071, 0, 6, -65537, 393216, 7, -65538, 0, 6, -65539, 0, 6, -65540, 0, 8, -131076, 327680, 6, -131068, 65536, 8, -131072, 262144, 7, -65533, 65536, 6, 3, 65536, 6, 65539, 65536, 6, 131075, 65536, 6, 327683, 327680, 6, 393219, 65536, 6, 458755, 65536, 6, 196617, 0, 6, 196616, 0, 6, 196615, 0, 6, 196614, 262144, 7, 196611, 131072, 8, 196612, 393216, 7, 458750, 65536, 6, 393214, 327680, 6, 327678, 327680, 8, 196603, 0, 6, 196604, 0, 6, 196605, 0, 6, 524283, 0, 6, 524284, 0, 6, 524285, 0, 6, 524286, 65536, 8, 196606, 65536, 7, 262142, 65536, 6)
 
-[node name="Player" parent="." index="1"]
+[node name="Bed" parent="Ground" index="2" instance=ExtResource("6_cax5l")]
+position = Vector2(4521, 2684)
+
+[node name="Bed2" parent="Ground" index="3" instance=ExtResource("6_cax5l")]
+position = Vector2(3592, 2684)
+
+[node name="Bed3" parent="Ground" index="4" instance=ExtResource("6_cax5l")]
+position = Vector2(2711, 2677)
+
+[node name="Bed4" parent="Ground" index="5" instance=ExtResource("6_cax5l")]
+position = Vector2(1877, 2677)
+
+[node name="Bed5" parent="Ground" index="6" instance=ExtResource("6_cax5l")]
+position = Vector2(4480, 1648)
+
+[node name="Bed6" parent="Ground" index="7" instance=ExtResource("6_cax5l")]
+position = Vector2(-1387, 2690)
+
+[node name="Bed7" parent="Ground" index="8" instance=ExtResource("6_cax5l")]
+position = Vector2(-2505, 1270)
+
+[node name="Bed8" parent="Ground" index="9" instance=ExtResource("6_cax5l")]
+position = Vector2(470, -1856)
+
+[node name="Bed9" parent="Ground" index="10" instance=ExtResource("6_cax5l")]
+position = Vector2(-474, -1848)
+
+[node name="Bed10" parent="Ground" index="11" instance=ExtResource("6_cax5l")]
+position = Vector2(-565, -829)
+
+[node name="Box" parent="Ground" index="12" instance=ExtResource("7_fxs32")]
+position = Vector2(-637, -435)
+
+[node name="Box2" parent="Ground" index="13" instance=ExtResource("7_fxs32")]
+position = Vector2(3297, -759)
+
+[node name="Box3" parent="Ground" index="14" instance=ExtResource("7_fxs32")]
+position = Vector2(2770, 1209)
+rotation = 3.02466
+scale = Vector2(1, 1)
+
+[node name="Box4" parent="Ground" index="15" instance=ExtResource("7_fxs32")]
+position = Vector2(1702, 2299)
+rotation = -3.02466
+scale = Vector2(1, 1)
+
+[node name="Box10" parent="Ground" index="16" instance=ExtResource("7_fxs32")]
+position = Vector2(4908, 2258)
+rotation = 2.5604
+
+[node name="Box5" parent="Ground" index="17" instance=ExtResource("7_fxs32")]
+position = Vector2(-289, 2331)
+rotation = -2.56563
+
+[node name="Box6" parent="Ground" index="18" instance=ExtResource("7_fxs32")]
+position = Vector2(-750, 3197)
+rotation = 1.5708
+
+[node name="Box7" parent="Ground" index="19" instance=ExtResource("7_fxs32")]
+position = Vector2(1108, 3499)
+rotation = 1.5708
+
+[node name="Box8" parent="Ground" index="20" instance=ExtResource("7_fxs32")]
+position = Vector2(-1446, 3158)
+rotation = -0.719147
+
+[node name="Box9" parent="Ground" index="21" instance=ExtResource("7_fxs32")]
+position = Vector2(-1407, 645)
+rotation = -1.47906
+
+[node name="Toilet" parent="Ground" index="22" instance=ExtResource("8_wnh6a")]
+position = Vector2(-1984, 1145)
+
+[node name="Toilet2" parent="Ground" index="23" instance=ExtResource("8_wnh6a")]
+position = Vector2(-1942, 2747)
+rotation = -3.14159
+
+[node name="Toilet4" parent="Ground" index="24" instance=ExtResource("8_wnh6a")]
+position = Vector2(941, 4323)
+rotation = -3.14159
+
+[node name="Toilet5" parent="Ground" index="25" instance=ExtResource("8_wnh6a")]
+position = Vector2(-491, 1326)
+rotation = -1.5708
+
+[node name="Toilet3" parent="Ground" index="26" instance=ExtResource("8_wnh6a")]
+position = Vector2(5010, 2776)
+rotation = -3.14159
+
+[node name="SteamVent" parent="Ground" index="27" instance=ExtResource("8_b3o7d")]
+position = Vector2(1639, 965)
+
+[node name="SteamVent3" parent="Ground" index="28" instance=ExtResource("8_b3o7d")]
+position = Vector2(3556, 1724)
+
+[node name="SteamVent4" parent="Ground" index="29" instance=ExtResource("8_b3o7d")]
+position = Vector2(3358, 1163)
+
+[node name="SteamVent5" parent="Ground" index="30" instance=ExtResource("8_b3o7d")]
+position = Vector2(-396, 1621)
+
+[node name="SteamVent6" parent="Ground" index="31" instance=ExtResource("8_b3o7d")]
+position = Vector2(237, 4239)
+
+[node name="SteamVent7" parent="Ground" index="32" instance=ExtResource("8_b3o7d")]
+position = Vector2(-181, 4230)
+
+[node name="SteamVent2" parent="Ground" index="33" instance=ExtResource("8_b3o7d")]
+position = Vector2(2200, -481)
+
+[node name="Player" parent="." index="2"]
 position = Vector2(4295, 394)
 
 [node name="Camera2D" parent="Player" index="7"]
@@ -47,7 +217,20 @@ texture = ExtResource("4_u7exg")
 texture_scale = 3.0
 metadata/_edit_lock_ = true
 
-[node name="Lights" parent="." index="3"]
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="4"]
+color = Color(0.202799, 0.293028, 0.333106, 1)
+blend_mode = 1
+
+[node name="ExitGateArea" type="Area2D" parent="." index="5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitGateArea" index="0"]
+position = Vector2(4851.75, 388.5)
+shape = SubResource("RectangleShape2D_1ohhf")
+
+[node name="Item" parent="." index="7" instance=ExtResource("12_xqgin")]
+position = Vector2(3621, 221)
+
+[node name="Lights" parent="." index="8"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
@@ -168,18 +351,5 @@ rotation = -1.5708
 [node name="SimpleLight3" parent="Lights" index="25" instance=ExtResource("5_2s3se")]
 position = Vector2(1329, 288)
 rotation = 1.5708
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="4"]
-color = Color(0.202799, 0.293028, 0.333106, 1)
-blend_mode = 1
-
-[node name="ExitGateArea" type="Area2D" parent="." index="5"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitGateArea" index="0"]
-position = Vector2(4851.75, 388.5)
-shape = SubResource("RectangleShape2D_1ohhf")
-
-[node name="Item" parent="." index="7" instance=ExtResource("12_xqgin")]
-position = Vector2(3621, 221)
 
 [connection signal="body_entered" from="ExitGateArea" to="." method="_on_exit_gate_area_body_entered"]

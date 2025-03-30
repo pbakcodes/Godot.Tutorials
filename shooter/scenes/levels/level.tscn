@@ -7,6 +7,8 @@
 [node name="Level" type="Node2D"]
 script = ExtResource("1_w7n4a")
 
+[node name="Decals" type="Node2D" parent="."]
+
 [node name="Ground" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("2_gnxlu")]
@@ -15,6 +17,8 @@ position = Vector2(198, 577)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.6, 0.6)
 position_smoothing_enabled = true
+
+[node name="Items" type="Node2D" parent="."]
 
 [node name="Projectiles" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -25,4 +29,3 @@ metadata/_edit_lock_ = true
 
 [connection signal="has_shoot_laser" from="Player" to="." method="_on_player_has_shoot_laser"]
 [connection signal="has_thrown_granade" from="Player" to="." method="_on_player_has_thrown_granade"]
-[connection signal="update_stats" from="Player" to="." method="_on_player_update_stats"]

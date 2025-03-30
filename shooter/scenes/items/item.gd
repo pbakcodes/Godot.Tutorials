@@ -4,6 +4,8 @@ var rotation_speed: int = 2
 var options: Array = ['laser', 'granade', 'health']
 var type: String = options.pick_random()
 var randomize_counter: int = 0
+var direction: Vector2
+var distance: int = randi_range(150, 250)
 
 var blue: Color = Color(0.1, 0.2, 0.8)
 var red: Color = Color(0.8, 0.2, 0.1)
@@ -34,8 +36,20 @@ func _ready() -> void:
 		$Sprite2D.modulate = red
 	if type == options[2]:
 		$Sprite2D.modulate = green
+		
+	#tween
+	var target_pos = position + direction * distance
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(self, "position", target_pos, 0.5)
+	tween.tween_property(self, "scale", Vector2(1, 1), 0.3).from(Vector2(0, 0))
 
 
-func _on_body_entered(body: Node2D) -> void:
-	body.add_item(type)
+func _on_body_entered(_body: Node2D) -> void:
+	if type == options[0]:
+		Globals.laser_amount += 5
+	if type == options[1]:
+		Globals.granade_amount += 1
+	if type == options[2]:
+		Globals.health += 10
 	queue_free()

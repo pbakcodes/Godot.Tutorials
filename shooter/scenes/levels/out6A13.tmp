@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://diupsqec1hrdc"]
+[gd_scene load_steps=23 format=3 uid="uid://diupsqec1hrdc"]
 
 [ext_resource type="PackedScene" uid="uid://2uud78fknxo6" path="res://scenes/levels/level.tscn" id="1_6q6ua"]
 [ext_resource type="PackedScene" uid="uid://ee130alqhs3s" path="res://scenes/objects/gate.tscn" id="2_ihxta"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://dxes8ivauafjv" path="res://scenes/objects/steam_vent.tscn" id="13_x7vu5"]
 [ext_resource type="PackedScene" uid="uid://dc1jl7jlngjd0" path="res://scenes/enemies/drone.tscn" id="15_xvxw8"]
 [ext_resource type="PackedScene" uid="uid://dkco4hm6y3op0" path="res://scenes/items/item.tscn" id="17_tl8y1"]
+[ext_resource type="PackedScene" uid="uid://8rmxfa1kaevb" path="res://scenes/objects/toilet.tscn" id="18_oyoh5"]
+[ext_resource type="PackedScene" uid="uid://of4w84tly88t" path="res://scenes/objects/box.tscn" id="19_g0sb7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6d5un"]
 resource_name = "Walls"
@@ -54,10 +56,6 @@ sources/1 = SubResource("TileSetAtlasSource_7emx2")
 
 [node name="Outside" instance=ExtResource("1_6q6ua")]
 script = ExtResource("2_q5f1y")
-
-[node name="Gate" parent="." index="1" instance=ExtResource("2_ihxta")]
-z_index = 1
-position = Vector2(144, -269)
 
 [node name="Soil" type="Sprite2D" parent="Ground" index="0"]
 texture_repeat = 2
@@ -129,15 +127,26 @@ frame_progress = 0.483206
 [node name="SteamVent" parent="Ground" index="14" instance=ExtResource("13_x7vu5")]
 position = Vector2(-273, 426)
 
-[node name="Player" parent="." index="3"]
+[node name="Gate" parent="." index="1" instance=ExtResource("2_ihxta")]
+position = Vector2(144, -269)
+
+[node name="Player" parent="." index="2"]
 position = Vector2(769, 198)
 
-[node name="Drone" parent="." index="4" instance=ExtResource("15_xvxw8")]
+[node name="Toilet" parent="." index="3" instance=ExtResource("18_oyoh5")]
+position = Vector2(1449, 156)
+collision_layer = 1
+collision_mask = 1
+
+[node name="Box" parent="." index="4" instance=ExtResource("19_g0sb7")]
+position = Vector2(1407, 576)
+collision_layer = 1
+collision_mask = 1
+
+[node name="Drone" parent="." index="6" instance=ExtResource("15_xvxw8")]
 position = Vector2(-198, 1004)
 
-[node name="Item" parent="." index="7" instance=ExtResource("17_tl8y1")]
+[node name="Item" parent="." index="9" instance=ExtResource("17_tl8y1")]
 position = Vector2(541, 336)
 
 [connection signal="player_entered" from="Gate" to="." method="_on_gate_player_entered"]
-[connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]
-[connection signal="player_exited" from="Ground/House" to="." method="_on_house_player_exited"]
