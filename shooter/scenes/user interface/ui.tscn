@@ -42,7 +42,7 @@ layout_mode = 2
 texture = ExtResource("2_x1bna")
 expand_mode = 4
 
-[node name="GranadeCounter" type="Control" parent="."]
+[node name="GrenadeCounter" type="Control" parent="."]
 layout_mode = 3
 anchor_left = 0.06
 anchor_top = 0.92
@@ -52,7 +52,7 @@ offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GranadeCounter"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GrenadeCounter"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,14 +60,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="GranadeCounter/VBoxContainer"]
+[node name="Label" type="Label" parent="GrenadeCounter/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_h1b78")
 text = "5
 "
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="GranadeCounter/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="GrenadeCounter/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_ilb2d")
 expand_mode = 4

@@ -32,4 +32,4 @@ metadata/_edit_lock_ = true
 [node name="UI" parent="." instance=ExtResource("3_kfajj")]
 
 [connection signal="has_shoot_laser" from="Player" to="." method="_on_player_has_shoot_laser"]
-[connection signal="has_thrown_granade" from="Player" to="." method="_on_player_has_thrown_granade"]
+[connection signal="has_thrown_grenade" from="Player" to="." method="_on_player_has_thrown_grenade"]

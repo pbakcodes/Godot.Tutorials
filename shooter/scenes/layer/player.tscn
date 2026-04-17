@@ -44,7 +44,7 @@ texture = ExtResource("1_o6mfu")
 [node name="LaserTimer" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="GranadeTimer" type="Timer" parent="."]
+[node name="GrenadeTimer" type="Timer" parent="."]
 wait_time = 2.0
 
 [node name="LaserStartPosition" type="Node2D" parent="."]
@@ -71,4 +71,4 @@ occluder = SubResource("OccluderPolygon2D_fh2wy")
 metadata/_edit_lock_ = true
 
 [connection signal="timeout" from="LaserTimer" to="." method="_on_laser_timer_timeout"]
-[connection signal="timeout" from="GranadeTimer" to="." method="_on_granade_timer_timeout"]
+[connection signal="timeout" from="GrenadeTimer" to="." method="_on_grenade_timer_timeout"]

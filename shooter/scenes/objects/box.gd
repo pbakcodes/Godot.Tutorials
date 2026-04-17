@@ -1,6 +1,6 @@
 extends ItemContainer
 
-func hit() -> void:
+func hit(_damage: int = 0) -> void:
 	if not opened:
 		$LidSprite.hide()
 		for i in range(5):

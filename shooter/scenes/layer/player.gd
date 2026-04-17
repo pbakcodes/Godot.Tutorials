@@ -1,59 +1,53 @@
 extends CharacterBody2D
 
-signal has_shoot_laser(pos, direction)
-signal has_thrown_granade(pos, direction)
+signal has_shoot_laser(pos: Vector2, direction: Vector2)
+signal has_thrown_grenade(pos: Vector2, direction: Vector2)
 
 var can_laser: bool = true
-var can_granade: bool = true
+var can_grenade: bool = true
+var can_be_damaged: bool = true
 
 @export var max_speed: int = 500
 var speed: int = max_speed
 
-func hit() -> void:
-	Globals.health -= 10
+func hit(damage: int = Constants.LASER_DAMAGE) -> void:
+	if can_be_damaged:
+		Globals.health -= damage
+		can_be_damaged = false
+		_start_immune_timer()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _start_immune_timer() -> void:
+	await get_tree().create_timer(Constants.PLAYER_IMMUNE_DURATION).timeout
+	can_be_damaged = true
+
 func _process(_delta: float) -> void:
-	
-	#input
-	var direction = Input.get_vector("left", "right", "up", "down")
-	
-	#collision
-	velocity = direction * speed
+	var input_direction: Vector2 = Input.get_vector("left", "right", "up", "down")
+
+	velocity = input_direction * speed
 	move_and_slide()
-	
-	#update global info of player position
+
 	Globals.player_position = global_position
-	
-	# rotation based on mouse position
 	look_at(get_global_mouse_position())
-	
-	#store player direction
-	var player_direction = (get_global_mouse_position() - position).normalized()
-	
-	#laser shooting input
-	if(Input.is_action_pressed("primary_action")) and can_laser and Globals.laser_amount > 0:
+
+	var aim_direction: Vector2 = (get_global_mouse_position() - position).normalized()
+
+	if Input.is_action_pressed("primary_action") and can_laser and Globals.laser_amount > 0:
 		Globals.laser_amount -= 1
 		$GPUParticles2D.emitting = true
-		# randomly select marker for laser initial position		
 		can_laser = false
 		$LaserTimer.start()
-		
-		#emit granade position with player direction towards mouse position
-		var selected_laser_marker_position: Vector2 = $LaserStartPosition.get_children().pick_random().global_position
-		has_shoot_laser.emit(selected_laser_marker_position, player_direction)
-		
-	if(Input.is_action_pressed("secondary_action")) and can_granade and Globals.granade_amount > 0:
-		Globals.granade_amount -= 1
-		can_granade = false
-		$GranadeTimer.start()
-		var marker_position = $LaserStartPosition/Marker2D1.global_position
-		
-		#emit granade position with player direction towards mouse position
-		has_thrown_granade.emit(marker_position, player_direction)
+		var laser_pos: Vector2 = $LaserStartPosition.get_children().pick_random().global_position
+		has_shoot_laser.emit(laser_pos, aim_direction)
+
+	if Input.is_action_pressed("secondary_action") and can_grenade and Globals.grenade_amount > 0:
+		Globals.grenade_amount -= 1
+		can_grenade = false
+		$GrenadeTimer.start()
+		var marker_position: Vector2 = $LaserStartPosition/Marker2D1.global_position
+		has_thrown_grenade.emit(marker_position, aim_direction)
 
 func _on_laser_timer_timeout() -> void:
 	can_laser = true
 
-func _on_granade_timer_timeout() -> void:
-	can_granade = true
+func _on_grenade_timer_timeout() -> void:
+	can_grenade = true
