@@ -19,17 +19,18 @@ func _on_container_opened(pos: Vector2, direction: Vector2) -> void:
 	item.direction = direction
 	$Items.call_deferred("add_child", item)
 
-func _on_scout_laser(pos: Vector2, direction: Vector2) -> void:
-	create_laser(pos, direction)
+func _on_scout_laser(pos: Vector2, direction: Vector2, source: Node2D) -> void:
+	create_laser(pos, direction, source)
 
 func _on_player_has_shoot_laser(pos: Vector2, direction: Vector2) -> void:
-	create_laser(pos, direction)
+	create_laser(pos, direction, $Player)
 
-func create_laser(pos: Vector2, direction: Vector2) -> void:
+func create_laser(pos: Vector2, direction: Vector2, source: Node2D = null) -> void:
 	var laser: Area2D = laser_scene.instantiate() as Area2D
 	laser.position = pos
 	laser.rotation_degrees = rad_to_deg(direction.angle()) + 90
 	laser.direction = direction
+	laser.source = source
 	$Projectiles.add_child(laser)
 
 func _on_player_has_thrown_grenade(pos: Vector2, direction: Vector2) -> void:

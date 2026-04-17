@@ -21,3 +21,8 @@ var health: int = 60:
 		stat_change.emit()
 		if health <= 0:
 			player_died.emit()
+
+func reset() -> void:
+	laser_amount = 20
+	grenade_amount = 5
+	health = 60

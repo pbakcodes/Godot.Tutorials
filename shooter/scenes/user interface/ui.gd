@@ -1,16 +1,30 @@
 extends CanvasLayer
 
+var game_over: bool = false
+
 @onready var laser_label: Label = $LaserCounter/VBoxContainer/Label
 @onready var grenade_label: Label = $GrenadeCounter/VBoxContainer/Label
 @onready var laser_icon: TextureRect = $LaserCounter/VBoxContainer/TextureRect
 @onready var grenade_icon: TextureRect = $GrenadeCounter/VBoxContainer/TextureRect
 @onready var health_bar: TextureProgressBar = $MarginContainer/TextureProgressBar
+@onready var game_over_label: Label = $GameOverLabel
 
 func _ready() -> void:
 	Globals.stat_change.connect(_on_stat_change)
+	Globals.player_died.connect(_on_player_died)
 	_update_laser_display()
 	_update_grenade_display()
 	_update_health_display()
+
+func _process(_delta: float) -> void:
+	if game_over and Input.is_physical_key_pressed(KEY_R):
+		game_over = false
+		Globals.reset()
+		get_tree().reload_current_scene()
+
+func _on_player_died() -> void:
+	game_over = true
+	game_over_label.visible = true
 
 func _update_laser_display() -> void:
 	laser_label.text = str(Globals.laser_amount)

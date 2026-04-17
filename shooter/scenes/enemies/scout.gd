@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var player_nearby: bool = false
-signal laser(pos: Vector2, direction: Vector2)
+signal laser(pos: Vector2, direction: Vector2, source: Node2D)
 var can_laser: bool = true
 var can_be_damaged: bool = true
 var right_gun_use: bool = true
@@ -23,7 +23,7 @@ func _process(_delta: float) -> void:
 			right_gun_use = not right_gun_use
 			var pos: Vector2 = $LaserSpawnPositions.get_child(int(right_gun_use)).global_position
 			var dir: Vector2 = (Globals.player_position - position).normalized()
-			laser.emit(pos, dir)
+			laser.emit(pos, dir, self)
 			can_laser = false
 			$Timers/LaserCooldown.start()
 
